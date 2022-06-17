@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import './App.css';
+import SearchBox from './components/SearchBox/SearchBox';
 import CardList from './components/CardList/CardList';
+import './App.css';
 
 class App extends Component {
   // 1 - constructor method for initialising state
@@ -49,22 +50,11 @@ class App extends Component {
     // 2
     return (
       <div className='App'>
-        <input
-          // search box for filtering monster
-          type='search'
-          className='search-box'
-          placeholder='Find a monster'
-          onChange={onSearchChange}
+        <SearchBox
+          className='monsters-search-box' // className prop == 'search-box' to be passed to other components
+          onChange={onSearchChange} // passing props to other components from here | onChange prop = {onSearchChange} event handler
+          placeholder='search monsters' // passing props to other components from here | placeholder prop = 'search monsters'
         />
-        {filteredMonsters.map((monster) => {
-          // keys for mapping are very important for re-rendering components on the page
-          // When using map() make sure that the top level div has a key with the id value
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
         <CardList monsters={filteredMonsters} />
       </div>
     );

@@ -1,4 +1,6 @@
 import { Component } from "react";
+import '../SearchBox/SearchBox.styles.css';
+
 
 class SearchBox extends Component {
 
@@ -8,9 +10,9 @@ class SearchBox extends Component {
       <input
           // search box for filtering monster
           type='search'
-          className='search-box'
-          placeholder='Find a monster'
-          onChange={onSearchChange}
+          className={`search-box ${this.props.className}`} // prop grabbed from app.js
+          placeholder={this.props.placeholder} // props grabbed form app.js
+          onChange={this.props.onChange} // props grabbed from app. js
         />
     )
   }
