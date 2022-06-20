@@ -50,6 +50,7 @@ class App extends Component {
     // 2
     return (
       <div className='App'>
+        <h1 className='app-title'>The Monster Squad</h1>
         <SearchBox
           className='monsters-search-box' // className prop == 'search-box' to be passed to other components
           onChange={onSearchChange} // passing props to other components from here | onChange prop = {onSearchChange} event handler
