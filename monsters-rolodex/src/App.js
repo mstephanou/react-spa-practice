@@ -5,20 +5,27 @@ import './App.css';
 
 const App = () => {
   const [searchField, setSearchField] = useState(''); //[value, setValue]
-  const [monster, setMonsters] = useState([]);
+  const [monsters, setMonsters] = useState([]);
+  const [filteredMonsters, setFiteredMonsters] = useState(monsters);
 
-  fetch('https://jsonplaceholder.typicode.com/users') // any fetch call is a 'side-effect' - therefore we need the useEffect hook
-    .then((res) => res.json())
-    .then((users) => setMonsters(users));
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users') // any fetch call is a 'side-effect' - therefore we need the useEffect hook
+      .then((response) => response.json())
+      .then((users) => setMonsters(users));
+  }, []); // empty array passed as a dependency array to prevent the app from calling fetch infinitely.
+
+  useEffect(() => {
+    const newFilteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
+    });
+
+    setFiteredMonsters(newFilteredMonsters);
+  }, [monsters, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase();
     setSearchField(searchFieldString);
   };
-
-  const filteredMonsters = this.state.monsters.filter((monster) => {
-    return monster.name.toLocaleLowerCase().includes(searchField);
-  });
 
   return (
     <div className='App'>
