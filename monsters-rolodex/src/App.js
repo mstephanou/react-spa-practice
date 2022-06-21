@@ -40,29 +40,4 @@ const App = () => {
   );
 };
 
-//     this.state = {
-//       monsters: [],
-//       searchField: '',
-//     };
-
-//     // 3 - componentdidmount method using promises to make API calls and mounts to DOM for rendering
-//     // Once component mounts fetch the new users, call setState, then re-render
-
-//       .then((res) => res.json())
-//       .then((users) =>
-//         this.setState(() => {
-//           return { monsters: users };
-//         })
-//       );
-//   }
-
-//     // destructured objects in ES6 makes it easier to read and a performance improvement
-//     const { monsters, searchField } = this.state;
-//     const { onSearchChange } = this;
-//     // Filter takes a boolean, return value if monster name includes the search string in the search box
-//     // It is not case sensititve so we need a new variable that converts searchField to lowercase
-//     );
-
-// }
-
 export default App;
